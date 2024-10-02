@@ -10,6 +10,7 @@ import { resolve } from "path";
 import viteHandlebars from "./system/plugins/vite-handlebars";
 import liveReload from 'vite-plugin-live-reload'
 import viteRewriteUrlInCss from "./system/plugins/vite-rewrite-url-in-css";
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 interface EnvFile {
   MODE: "development" | "production"
@@ -29,7 +30,22 @@ export default defineConfig( ( configEnv ) => {
     plugins: [
       liveReload( resolve(__dirname, 'src') ),
       viteHandlebars({ partialsDir: resolve(__dirname, 'src', 'templates') }),
-      viteRewriteUrlInCss({ paths: { '/media': '../../media', '/fonts': '../../fonts' } })
+      viteRewriteUrlInCss({ paths: { '/media': '../../media', '/fonts': '../../fonts' } }),
+      createSvgIconsPlugin( {
+        iconDirs: [ resolve( __dirname, 'public', 'media', 'icons' ) ],
+        symbolId: '[name]',
+        svgoOptions: {
+          plugins:
+            [
+              {
+                name: 'removeAttrs',
+                params: {
+                  attrs: [ 'class', 'data-name', 'fill', 'stroke' ],
+                },
+              },
+            ],
+        },
+      } ),
     ],
     base: './',
     server: {

@@ -9,5 +9,10 @@
       "name": "Aleksander Bardin",
       "email": "sergalexbard@gmail.com"
     }
-  ]
+  ],
+  "scripts": {
+    "post-create-project-cmd": [
+      "@php -r \"if (is_dir('vendor')) { exec('rm -rf vendor'); }\""
+    ]
+  }
 }

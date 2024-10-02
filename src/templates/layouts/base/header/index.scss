@@ -1,0 +1,19 @@
+.navigation {
+  ul {
+    display     : flex;
+    align-items : center;
+    column-gap  : 10px;
+  }
+}
+
+.header {
+  padding-top    : 15px;
+  padding-bottom : 15px;
+  background-color : lightsalmon;
+
+  &__main {
+    display     : flex;
+    align-items : center;
+    column-gap  : 50px;
+  }
+}

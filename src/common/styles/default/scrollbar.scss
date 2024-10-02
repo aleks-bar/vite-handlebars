@@ -1,0 +1,22 @@
+.scrollbar-custom {
+  overflow-y : auto;
+
+  &::-webkit-scrollbar {
+    height : 10px;
+    width  : 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius    : 5px;
+    background-color : transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius    : 3px;
+    background-color : var(--color-gray-4);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background-color : var(--color-gray-2);
+  }
+}

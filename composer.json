@@ -1,0 +1,12 @@
+{
+  "name": "aleks-bar/vite-handlebars",
+  "description": "Vite and Handlebars assembly for build to html pages with css and js files for each",
+  "type": "project",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Aleksander Bardin",
+      "email": "sergalexbard@gmail.com"
+    }
+  ]
+}

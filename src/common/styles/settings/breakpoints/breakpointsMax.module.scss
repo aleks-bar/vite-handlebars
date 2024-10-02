@@ -1,0 +1,7 @@
+@import "./breakpoints";
+
+:export {
+  @each $breakpoint, $value in $breakpoints-max {
+    #{$breakpoint}: #{$value}
+  }
+}

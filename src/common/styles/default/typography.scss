@@ -1,0 +1,104 @@
+body {
+  font-family         : "Onest", sans-serif;
+  font-optical-sizing : auto;
+  font-style          : normal;
+  line-height         : map-get($main_settings, 'line-height');
+  color               : map-get($main_settings, 'text-color');
+
+  @extend .text-lg;
+}
+
+p {
+  margin-top : 0;
+  margin-bottom : 0;
+
+  &:not(:last-child) {
+    margin-bottom : map-get($main_settings, 'redactor-elem-margin-bottom');
+  }
+}
+
+a {
+  color           : inherit;
+  text-decoration : inherit;
+
+  &:not(.link-reset) {
+    transition : color .15s;
+
+    svg {
+      transition : fill .15s;
+    }
+
+    &:hover {
+      color : var(--color-accent);
+
+      svg {
+        fill : var(--color-accent);
+      }
+    }
+  }
+}
+
+ul, ol {
+  &.list-reset {
+    margin              : 0;
+    padding             : 0;
+    list-style-type     : none;
+    list-style-position : inside;
+  }
+
+  &:not(.list-reset) {
+    padding-inline-start : map-get($main_settings, list-padding-left);
+    margin-block-start   : map-get($main_settings, 'redactor-elem-margin-bottom');
+    margin-block-end     : map-get($main_settings, 'redactor-elem-margin-bottom');
+
+    li:not(:last-child) {
+      margin-bottom : map-get($main_settings, 'redactor-elem-margin-bottom');
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top    : 0;
+  font-weight   : map-get($main_settings, 'title-font-weght');
+  margin-bottom : map-get($main_settings, 'title-margin-bottom');
+}
+
+// ------ editor styles ------ start
+@each $html-tag, $styles-data in $editor-text-styles {
+  #{$html-tag} {
+    $text-size : map-get($text-sizes, map-get($styles-data, text-size), map-get($styles-data, variant));
+
+    @if map-get($editor-text-other-styles, $html-tag) != null {
+      @each $style-name, $style-value in map-get($editor-text-other-styles, $html-tag) {
+        @if type-of($style-value) == 'map' {
+          @if map-has-value($style-value, 'min') and map-has-value($style-value, 'max') {
+            #{$style-name}: getClamp(map-get($style-value, 'min'), map-get($style-value, 'max'));
+          }
+        } @else {
+          #{$style-name}: #{$style-value};
+        }
+      }
+    }
+  }
+}
+// ------ editor styles ------ end
+
+// ------ text sizes ------ start
+@each $text-style, $text-size in $text-sizes {
+  .#{$text-style} {
+    @each $size-name, $size-value in $text-size {
+      &-#{$size-name} {
+        @each $style-name, $style-value in map-get($text-size, $size-name) {
+          @if type-of($style-value) == 'map' {
+            @if map-has-value($style-value, 'min') and map-has-value($style-value, 'max') {
+              #{$style-name}: getClamp(map-get($style-value, 'min'), map-get($style-value, 'max'));
+            }
+          } @else {
+            #{$style-name}: #{$style-value};
+          }
+        }
+      }
+    }
+  }
+}
+// ------ text sizes ------ end

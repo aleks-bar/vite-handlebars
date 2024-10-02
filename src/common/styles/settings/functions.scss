@@ -1,0 +1,24 @@
+@function getClamp($minValue, $maxValue, $minScreen: 375, $maxScreen: 1920) {
+  $formula: calc(#{$minValue}px + (#{$maxValue} - #{$minValue}) * ((100vw - #{$minScreen}px) / (#{$maxScreen} - #{$minScreen})));
+  @return clamp(#{$minValue}px, $formula, #{$maxValue}px);
+}
+
+@function map-has-value($map, $key) {
+  @if map-has-key($map, $key) {
+    $value: map-get($map, $key);
+    @return $value != null;
+  }
+  @return false;
+}
+
+@function is-map($value) {
+  @return type-of($value) == "map";
+}
+
+@function getContainerTypeName($type){
+  @if $type == 'standart' {
+    @return ''
+  } @else {
+    @return '-#{$type}'
+  }
+}

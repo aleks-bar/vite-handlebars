@@ -1,0 +1,78 @@
+._ {
+  // container
+  @each $container-name, $container-settings in $container {
+    &_container#{getContainerTypeName($container-name)} {
+      @each $default-option-name, $default-option-value in $default-container-options {
+        #{$default-option-name}: #{$default-option-value}
+      }
+
+      @each $breakpoint-name, $padding-value in $container-padding {
+        @if $breakpoint-name == 'default' {
+          padding-left: $padding-value;
+          padding-right: $padding-value;
+        } @else {
+          @media (min-width: map-get($breakpoints-min, $breakpoint-name)) {
+            padding-left: $padding-value;
+            padding-right: $padding-value;
+          }
+        }
+      }
+
+      & {
+        @each $option-name, $option-value in $container-settings {
+          @if is-map($option-value) {
+            @each $breakpoint-name, $option-value-in-breakpoint in $option-value {
+              @media (min-width: map-get($breakpoints-min, $breakpoint-name)) {
+                #{$option-name}: $option-value-in-breakpoint;
+              }
+            }
+          } @else {
+            #{$option-name}: $option-value;
+          }
+        }
+      }
+    }
+  }
+  // loading
+  &_loading {
+    position : relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width : 100%;
+      height : 100%;
+      background: var(--color-gray-3);
+      opacity: .8;
+      inset: 0;
+      z-index : 5;
+      box-shadow: 0 0 30px 15px var(--color-gray-3);
+      animation: 1.7s flash linear infinite;
+    }
+  }
+  // empty img
+  &_empty-img {
+    background-color: var(--color-gray-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+      content: '';
+      display: block;
+      background-image: url("data:image/svg+xml,%3Csvg width='260' height='208' viewBox='0 0 260 208' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M86.6667 60.6667C86.6667 67.8889 84.1389 74.0278 79.0833 79.0833C74.0278 84.1389 67.8889 86.6667 60.6667 86.6667C53.4444 86.6667 47.3056 84.1389 42.25 79.0833C37.1944 74.0278 34.6667 67.8889 34.6667 60.6667C34.6667 53.4444 37.1944 47.3056 42.25 42.25C47.3056 37.1944 53.4444 34.6667 60.6667 34.6667C67.8889 34.6667 74.0278 37.1944 79.0833 42.25C84.1389 47.3056 86.6667 53.4444 86.6667 60.6667ZM225.333 112.667V173.333H34.6667V147.333L78 104L99.6667 125.667L169 56.3333L225.333 112.667ZM238.333 17.3333H21.6667C20.4931 17.3333 19.4774 17.7622 18.6198 18.6198C17.7622 19.4774 17.3333 20.4931 17.3333 21.6667V186.333C17.3333 187.507 17.7622 188.523 18.6198 189.38C19.4774 190.238 20.4931 190.667 21.6667 190.667H238.333C239.507 190.667 240.523 190.238 241.38 189.38C242.238 188.523 242.667 187.507 242.667 186.333V21.6667C242.667 20.4931 242.238 19.4774 241.38 18.6198C240.523 17.7622 239.507 17.3333 238.333 17.3333ZM260 21.6667V186.333C260 192.292 257.878 197.392 253.635 201.635C249.392 205.878 244.292 208 238.333 208H21.6667C15.7083 208 10.6076 205.878 6.36458 201.635C2.12153 197.392 0 192.292 0 186.333V21.6667C0 15.7083 2.12153 10.6076 6.36458 6.36458C10.6076 2.12153 15.7083 0 21.6667 0H238.333C244.292 0 249.392 2.12153 253.635 6.36458C257.878 10.6076 260 15.7083 260 21.6667Z' fill='%2316181D'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      aspect-ratio: 1.25 / 1;
+      width : 20%;
+    }
+  }
+  @each $lines-value in map-get($text-crop, lines) {
+    &_text-crop-#{$lines-value} {
+      -webkit-line-clamp: #{$lines-value};
+      @each $default-style-name, $default-style-value in map-get($text-crop, base) {
+        #{$default-style-name}: #{$default-style-value};
+      }
+    }
+  }
+  &_text-no-wrap {
+    white-space: nowrap;
+  }
+}

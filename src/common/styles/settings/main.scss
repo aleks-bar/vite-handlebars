@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+$main_settings : (
+    line-height: 1.5,
+    text-color: var(--color-dark),
+    title-font-weght: map-get($fonts-weights, 'medium'),
+    redactor-elem-margin-bottom: 8px,
+    title-margin-bottom: 16px,
+    list-padding-left: 20px
+);

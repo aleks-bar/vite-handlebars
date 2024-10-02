@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "esModuleInterop": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "types": [
+      "node",
+      "vite/client",
+    ],
+    "paths": {
+      "@common/*": ["src/common/*"],
+      "@layouts/*": ["src/templates/layouts/*"],
+      "@sections/*": ["src/templates/sections/*"],
+      "@shared/*": ["src/templates/shared/*"],
+      "@media/*": ["public/media/*"],
+      "@fonts/*": ["public/fonts/*"],
+      "@jsHelpers/*": ["src/js/helpers/*"],
+    }
+  },
+  "include": ["src/**/*", "globals.d.ts"],
+}

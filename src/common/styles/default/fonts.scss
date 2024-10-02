@@ -1,0 +1,13 @@
+@font-face {
+  font-family  : 'Tenor-Sans';
+  src          : url('@fonts/TenorSans/TenorSans-Regular.woff') format('woff'),
+                 url('@fonts/TenorSans/TenorSans-Regular.woff2') format('woff2'),
+                 url('@fonts/TenorSans/TenorSans-Regular.ttf') format('truetype');
+  font-style   : normal;
+  font-weight  : 400;
+  font-display : swap;
+}
+
+.font-tenor-sans {
+  font-family : "Tenor-Sans", sans-serif;
+}

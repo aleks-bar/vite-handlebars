@@ -1,0 +1,11 @@
+.footer {
+  padding-top : 20px;
+  padding-bottom : 50px;
+  background-color : lightgreen;
+
+  &__main {
+    display: flex;
+    align-items: center;
+    column-gap: 100px;
+  }
+}

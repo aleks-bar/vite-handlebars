@@ -1,0 +1,117 @@
+$fonts-weights : (
+    regular: 400,
+    medium: 500
+);
+
+/*
+  -- стили для классов типографики --
+
+  писать нужно в таком порядке:
+    - сначала указываем название общего класса обозначающего размер текста для некоторой группы
+    - внутри этого класса указываем указываем модификатор который обозначает тип внутри данной группы текста
+    - далее внутри этого типа пишем:
+        - стили если бы они были записаны в классе
+        - если нужно задать стилю 2 значения (минимальное и максимальное),
+          то пишем в значении ( min: минимальное, max: максимальное ). Значение в пикселях, но без указания пикселей
+
+  Пример:
+    title: (
+      lg: (
+        line-height: 1,
+        letter-spacing: -1px,
+        font-size: ( min: 40, max: 56 )
+      )
+    )
+  Это создаст класс "title-lg"
+ */
+$text-sizes    : (
+    heading: (
+        lg: (
+            line-height: .8,
+            font-size: ( min: 40, max: 56 ),
+            letter-spacing: -1.2px,
+        ),
+        md: (
+            line-height: 1.05,
+            font-size: ( min: 32, max: 48 ),
+            letter-spacing: -0.96px
+        ),
+    ),
+    title: (
+        md: (
+            line-height: 1.05,
+            font-size: ( min: 24, max: 32 ),
+            letter-spacing: -0.96px
+        ),
+        sm: (
+            line-height: 1.2,
+            font-size: ( min: 18, max: 24 ),
+            letter-spacing: -0.72px
+        ),
+    ),
+    text: (
+        xl: (
+            line-height: 1.3,
+            font-size: ( min: 16, max: 18 ),
+        ),
+        lg: (
+            line-height: 1.5,
+            font-size: ( min: 14, max: 16 ),
+        ),
+        md: (
+            line-height: 1.5,
+            font-size: 14px,
+        ),
+        sm: (
+            line-height: 1.3,
+            font-size: 12px,
+        ),
+    )
+);
+
+/*
+  -- стили для текста которые схожи со стилями классов для типографики --
+
+  писать нужно в таком порядке:
+  - первым указывается тег текста
+  - внутри пишем:
+      - поле "text-size" аналогично полю первого уровня в $text-sizes
+      - поле "variant" аналогично полю первого уровня в предыдущем поле объекта $text-sizes
+ */
+$editor-text-styles : (
+    h2: (
+        text-size: title,
+        variant: lg
+    ),
+    h3: (
+        text-size: title,
+        variant: sm,
+    ),
+    p: (
+        text-size: text,
+        variant: md
+    )
+);
+
+/**
+  -- остальные стили текста --
+
+  писать нужно в таком порядке:
+    - первым указывается тег текста
+    - внутри указываются стили для тега по принципу "mobile first"
+    - среди стилей можно добавить поле "breakpoints" и внутри указать ключ брейкпоинта для $breakpoints-min и
+      внутри прописать стили для него.
+
+    Например:
+      p: (
+        margin-bottom: 8px,
+        breakpoints: (
+          lg: ( margin-bottom : 16px, ),
+        )
+      )
+ */
+$editor-text-other-styles : (
+  h3: (
+    margin-bottom: 8px,
+  )
+)

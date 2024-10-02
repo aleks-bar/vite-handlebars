@@ -1,0 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  overflow-x: hidden;
+  @media (min-width: map-get($breakpoints-min, lg)) {
+    margin-right: calc(100% - 100vw);
+  }
+}
+#app {
+  position: relative;
+}

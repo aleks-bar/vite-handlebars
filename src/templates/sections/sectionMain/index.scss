@@ -1,0 +1,24 @@
+.section-main {
+  background-color : lightcyan;
+  padding-top      : 100px;
+  padding-bottom   : 100px;
+
+  button {
+    background-color : blue;
+    border           : none;
+    border-radius    : 7px;
+    padding          : 5px 16px;
+
+    span {
+      color       : white;
+      font-size   : 26px;
+      font-weight : 700;
+    }
+  }
+
+  .image {
+    background-image : url('@media/images/bird.jpg');
+    width            : 500px;
+    height           : 300px;
+  }
+}

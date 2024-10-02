@@ -1,0 +1,31 @@
+{
+  "name": "bitrix-front",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^22.5.1",
+    "@types/resolve": "^1.20.6",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "fast-glob": "^3.3.2",
+    "handlebars": "^4.7.8",
+    "postcss": "^8.4.47",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-preset-env": "^10.0.5",
+    "postcss-sort-media-queries": "^5.2.0",
+    "sass": "^1.79.3",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vite-plugin-live-reload": "^3.0.3"
+  },
+  "dependencies": {
+    "vite-plugin-handlebars": "^2.0.0"
+  }
+}

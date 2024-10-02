@@ -1,0 +1,28 @@
+$container-padding         : (
+    default: 16px,
+    xl: 32px
+);
+
+$default-container-options : (
+    width: 100%,
+    margin-left: auto,
+    margin-right: auto,
+);
+
+$container            : (
+    standart: (
+        max-width: (
+            md: calc(map-get($breakpoints-min, md) + (map-get($container-padding, default) * 2)),
+            lg: calc(map-get($breakpoints-min, lg) + (map-get($container-padding, default) * 2)),
+            xl: calc(1416px + (map-get($container-padding, xl) * 2)),
+        )
+    ),
+    md: (
+        max-width: (
+            xl: calc(1260px + (map-get($container-padding, xl) * 2)),
+        ),
+    ),
+    full: (
+        max-width: 100%,
+    )
+);
